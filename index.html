@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shipping Information | CEC</title>
+  <style>
+    :root {
+      --primary: #1793D1;
+      --secondary: #241f21;
+      --white: #ffffff;
+      --light: #f5f9fc;
+      --mid: #d9e8f2;
+      --text: #1f2933;
+      --shadow: 0 4px 18px rgba(0,0,0,0.08);
+      --radius: 16px;
+      --max: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Fira Sans", Arial, sans-serif;
+      color: var(--text);
+      background: var(--light);
+      line-height: 1.55;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+      color: var(--secondary);
+      margin-top: 0;
+      letter-spacing: 0.01em;
+      font-weight: 500;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 64px 0;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      margin-bottom: 12px;
+    }
+
+    .section-intro {
+      max-width: 760px;
+      margin-bottom: 28px;
+      font-size: 1.05rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: var(--primary);
+      color: var(--white);
+      padding: 8px 16px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      transform: skew(-18deg);
+      margin-bottom: 20px;
+    }
+
+    .eyebrow span,
+    .btn span {
+      display: inline-block;
+      transform: skew(18deg);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(23,147,209,0.95), rgba(23,147,209,0.78)),
+        linear-gradient(160deg, #0f2d3d, #1793D1);
+      color: var(--white);
+      padding: 84px 0 72px;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      background: rgba(255,255,255,0.08);
+      transform: skew(-24deg);
+    }
+
+    .hero::before {
+      width: 240px;
+      height: 100%;
+      right: 8%;
+      top: 0;
+    }
+
+    .hero::after {
+      width: 120px;
+      height: 100%;
+      right: 22%;
+      top: 0;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      color: var(--white);
+      font-size: clamp(2.4rem, 5vw, 4.3rem);
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      font-size: 1.08rem;
+      max-width: 720px;
+      margin-bottom: 24px;
+    }
+
+    .hero-card,
+    .card,
+    .map-card {
+      background: var(--white);
+      border: 2px solid var(--secondary);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+    }
+
+    .hero-card {
+      color: var(--secondary);
+      padding: 24px;
+      transform: rotate(-2deg);
+    }
+
+    .check-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .check-list li {
+      padding-left: 28px;
+      position: relative;
+      font-weight: 600;
+    }
+
+    .check-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      border: 2px solid var(--secondary);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+      transform: skew(-18deg);
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--white);
+      color: var(--secondary);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border-color: var(--white);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+    }
+
+    .btn:hover {
+      transform: skew(-18deg) translate(-2px, -2px);
+    }
+
+    .grid-2,
+    .grid-3,
+    .stats-grid,
+    .support-grid,
+    .bottom-grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .grid-2 { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .stats-grid { grid-template-columns: repeat(3, 1fr); }
+    .support-grid { grid-template-columns: 1fr; }
+    .bottom-grid { grid-template-columns: 1fr; align-items: start; }
+
+    .card,
+    .map-card {
+      padding: 24px;
+    }
+
+    .angle-tag {
+      display: inline-block;
+      background: var(--primary);
+      color: var(--white);
+      padding: 6px 14px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 14px;
+      border-radius: 16px;
+    }
+
+    .stats-grid .card {
+      background: linear-gradient(180deg, #ffffff, #eef7fc);
+    }
+
+    .stat-number {
+      font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+      font-size: 2.3rem;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      border: 2px solid var(--secondary);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border-radius: var(--radius);
+    }
+
+    th, td {
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid #cfd9df;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--secondary);
+      color: var(--white);
+      font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+      letter-spacing: 0.03em;
+    }
+
+    tr:nth-child(even) td {
+      background: #f8fbfd;
+    }
+
+    .notice-bar {
+      background: var(--secondary);
+      color: var(--white);
+      padding: 18px 22px;
+      border-left: 8px solid var(--primary);
+      box-shadow: var(--shadow);
+      margin-top: 18px;
+      font-weight: 600;
+      border-radius: var(--radius);
+    }
+
+    .mini-list {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .mini-list li + li {
+      margin-top: 10px;
+    }
+
+    .map-wrap {
+      position: relative;
+      background: linear-gradient(135deg, #e8f4fb, #ffffff);
+      border: 2px solid var(--secondary);
+      min-height: 420px;
+      overflow: hidden;
+      border-radius: var(--radius);
+    }
+
+    .map-wrap::before,
+    .map-wrap::after {
+      content: "";
+      position: absolute;
+      inset: auto;
+      background: rgba(23,147,209,0.1);
+      transform: skew(-22deg);
+    }
+
+    .map-wrap::before {
+      width: 160px;
+      height: 100%;
+      left: 18%;
+      top: 0;
+    }
+
+    .map-wrap::after {
+      width: 120px;
+      height: 100%;
+      right: 16%;
+      top: 0;
+    }
+
+    .map-svg {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 420px;
+    }
+
+    .province {
+      fill: #b7dff2;
+      stroke: var(--secondary);
+      stroke-width: 2;
+    }
+
+    .province-fast { fill: #1793D1; }
+    .province-mid { fill: #6ebde3; }
+    .province-slow { fill: #a8d7ef; }
+
+    .map-label {
+      font-family: "Fira Sans", Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      fill: var(--secondary);
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 18px;
+      margin-top: 18px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .legend i {
+      width: 18px;
+      height: 18px;
+      display: inline-block;
+      border: 2px solid var(--secondary);
+    }
+
+    .footer-note {
+      font-size: 0.92rem;
+      color: #59656f;
+      margin-top: 16px;
+    }
+
+    .text-muted {
+      color: #5d6770;
+    }
+
+    /* ── Accordion ── */
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .accordion-item {
+      background: var(--white);
+      border: 2px solid var(--secondary);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .accordion-item summary {
+      padding: 18px 24px;
+      font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+
+    .accordion-item summary::-webkit-details-marker { display: none; }
+
+    .accordion-item summary::after {
+      content: "+";
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: var(--primary);
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+
+    .accordion-item[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .accordion-item[open] summary {
+      border-bottom: 1px solid var(--mid);
+    }
+
+    .accordion-body {
+      padding: 20px 24px;
+    }
+
+    .accordion-body p:last-child,
+    .accordion-body ul:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── Scroll animations ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+    .reveal-delay-6 { transition-delay: 0.6s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .grid-3,
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .section {
+        padding: 48px 0;
+      }
+
+      th, td {
+        padding: 12px;
+        font-size: 0.95rem;
+      }
+
+      .hero {
+        padding: 64px 0 52px;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow"><span>Shipping Information</span></div>
+        <h1>Fast, Reliable Shipping Across Canada</h1>
+        <p>
+          Orders ship from Coquitlam, BC with clear delivery timelines, full tracking,
+          and practical options for standard, expedited, local pickup, and bulk freight.
+        </p>
+        <ul class="check-list">
+          <li>Orders placed before 12 PM PST typically ship same day</li>
+          <li>Standard delivery across Canada in 1–5 business days</li>
+          <li>Tracking sent as soon as your order leaves our warehouse</li>
+        </ul>
+        <div class="hero-actions">
+          <a href="/collections/all" class="btn btn-primary"><span>Shop Adhesives</span></a>
+          <a href="/pages/contact" class="btn btn-secondary"><span>Contact Support</span></a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="angle-tag">What to Expect</div>
+        <h3>Built for shops that need clear answers</h3>
+        <ul class="mini-list">
+          <li>Processing time and transit time separated clearly</li>
+          <li>Region-based delivery estimates for Canada</li>
+          <li>Custom support available for large or repeat orders</li>
+          <li>Local pickup option for Lower Mainland customers</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow"><span>Core Promise</span></div>
+      <h2 class="section-title">Shipping that matches the job</h2>
+      <p class="section-intro">
+        Whether you are restocking your shop, filling a production order, or replacing material quickly,
+        the goal is simple: get the right adhesive to you on time with no guesswork.
+      </p>
+
+      <div class="stats-grid">
+        <div class="card">
+          <div class="stat-number">0–1</div>
+          <h3>Business Day Processing</h3>
+          <p class="text-muted">In-stock orders are usually packed and prepared within one business day.</p>
+        </div>
+        <div class="card">
+          <div class="stat-number">1–5</div>
+          <h3>Business Day Delivery</h3>
+          <p class="text-muted">Typical standard transit time across most Canadian regions.</p>
+        </div>
+        <div class="card">
+          <div class="stat-number">100%</div>
+          <h3>Tracked Orders</h3>
+          <p class="text-muted">Tracking details are sent automatically once your shipment is confirmed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="eyebrow"><span>Shipping Options</span></div>
+      <h2 class="section-title">Choose the right delivery option</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Estimated Delivery</th>
+            <th>Cost</th>
+            <th>Best For</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Standard Shipping</strong></td>
+            <td>2–5 business days</td>
+            <td>Calculated at checkout</td>
+            <td>Most routine shop and restock orders</td>
+            <td>Balanced rate and transit time for most destinations</td>
+          </tr>
+          <tr>
+            <td><strong>Expedited Shipping</strong></td>
+            <td>1–3 business days</td>
+            <td>Higher rate</td>
+            <td>Urgent replacements and production deadlines</td>
+            <td>Priority handling and faster transit where available</td>
+          </tr>
+          <tr>
+            <td><strong>Local Pickup</strong></td>
+            <td>Same day or next business day</td>
+            <td>Free</td>
+            <td>Customers near Coquitlam or the Lower Mainland</td>
+            <td>Pickup notice sent when order is ready</td>
+          </tr>
+          <tr>
+            <td><strong>Bulk / Freight Shipping</strong></td>
+            <td>Quoted by order size and destination</td>
+            <td>Custom quote</td>
+            <td>Large-volume business orders</td>
+            <td>Optimized carrier selection for cost and handling efficiency</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="notice-bar">
+        Free standard shipping can be promoted here once your order threshold is finalized.
+        Example: <strong>Free standard shipping on qualifying orders over $X.</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid-2">
+      <div class="card">
+        <div class="angle-tag">Clarity First</div>
+        <h2>Processing time vs delivery time</h2>
+        <p>
+          These are not the same thing. Processing time covers order review, packing, and handoff.
+          Delivery time starts once the carrier has the shipment.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>What It Means</th>
+              <th>Typical Timing</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Processing</strong></td>
+              <td>Order verification, packing, labeling, and carrier handoff</td>
+              <td>0–1 business day</td>
+            </tr>
+            <tr>
+              <td><strong>Transit</strong></td>
+              <td>Carrier movement from our warehouse to your shipping address</td>
+              <td>1–5 business days depending on region</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="footer-note">
+          Orders placed after the daily cutoff are processed on the next business day.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="angle-tag">Order Flow</div>
+        <h2>How shipping works</h2>
+        <ul class="check-list">
+          <li>Place your order online</li>
+          <li>We confirm stock and prepare the shipment</li>
+          <li>Your package is handed to the selected carrier</li>
+          <li>Tracking is emailed automatically</li>
+          <li>Your order arrives based on destination and service level</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container bottom-grid">
+      <div>
+        <div class="eyebrow"><span>Canada Delivery Map</span></div>
+        <h2 class="section-title">Estimated transit by region</h2>
+        <p class="section-intro">
+          Delivery times vary by location. The map below gives a practical overview for standard shipping across Canada.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Region</th>
+              <th>Typical Transit Time</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>British Columbia</strong></td>
+              <td>1–2 business days</td>
+              <td>Fastest standard delivery from our Coquitlam location</td>
+            </tr>
+            <tr>
+              <td><strong>Alberta</strong></td>
+              <td>2–3 business days</td>
+              <td>Strong coverage for Edmonton, Calgary, and surrounding areas</td>
+            </tr>
+            <tr>
+              <td><strong>Ontario</strong></td>
+              <td>3–5 business days</td>
+              <td>Typical for GTA and major city destinations</td>
+            </tr>
+            <tr>
+              <td><strong>Quebec</strong></td>
+              <td>4–6 business days</td>
+              <td>Transit may vary slightly by carrier and final route</td>
+            </tr>
+            <tr>
+              <td><strong>Atlantic Canada</strong></td>
+              <td>4–6 business days</td>
+              <td>Longer routes may apply for some remote areas</td>
+            </tr>
+            <tr>
+              <td><strong>Northern / Remote Areas</strong></td>
+              <td>Extended transit</td>
+              <td>Additional handling time may apply</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="map-card">
+        <div class="angle-tag">Visual Guide</div>
+        <div class="map-wrap">
+          <svg class="map-svg" viewBox="0 0 540 420" xmlns="http://www.w3.org/2000/svg" aria-label="Stylized Canada shipping region map">
+            <rect x="0" y="0" width="540" height="420" fill="transparent"/>
+
+            <polygon class="province province-fast" points="55,140 130,110 170,145 155,220 70,225 40,180" />
+            <text class="map-label" x="78" y="175">BC</text>
+            <text class="map-label" x="65" y="192">1–2 days</text>
+
+            <polygon class="province province-mid" points="170,120 250,112 280,165 255,235 165,230 155,165" />
+            <text class="map-label" x="195" y="176">AB</text>
+            <text class="map-label" x="182" y="193">2–3 days</text>
+
+            <polygon class="province province-mid" points="252,125 305,130 320,170 290,228 252,220 262,180" />
+            <text class="map-label" x="268" y="177">SK / MB</text>
+            <text class="map-label" x="267" y="194">3–4 days</text>
+
+            <polygon class="province province-slow" points="322,145 432,142 465,186 438,242 338,238 300,195" />
+            <text class="map-label" x="356" y="177">ON</text>
+            <text class="map-label" x="345" y="194">3–5 days</text>
+
+            <polygon class="province province-slow" points="422,190 485,182 503,225 468,262 418,248 405,212" />
+            <text class="map-label" x="438" y="219">QC</text>
+            <text class="map-label" x="430" y="236">4–6 days</text>
+
+            <polygon class="province province-slow" points="486,220 525,227 518,258 495,274 468,263" />
+            <text class="map-label" x="480" y="244">ATL</text>
+            <text class="map-label" x="474" y="261">4–6 days</text>
+
+            <circle cx="115" cy="208" r="7" fill="#241f21" />
+            <text class="map-label" x="128" y="212">Coquitlam, BC</text>
+          </svg>
+        </div>
+        <div class="legend">
+          <span><i style="background:#1793D1"></i> Fastest transit</span>
+          <span><i style="background:#6ebde3"></i> Mid-range transit</span>
+          <span><i style="background:#a8d7ef"></i> Longer transit</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container support-grid">
+      <div class="card">
+        <div class="angle-tag">Tracking</div>
+        <h2>Carriers and order tracking</h2>
+        <p>
+          Orders ship using reliable carrier services selected for destination, package size,
+          and service level. Tracking is sent automatically once the shipment is scanned into the network.
+        </p>
+        <ul class="mini-list">
+          <li>Tracking details sent by email after shipment confirmation</li>
+          <li>Transit updates depend on carrier scan events</li>
+          <li>Expedited options available for urgent requirements</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="angle-tag">Local Pickup</div>
+        <h2>Pickup in Coquitlam, BC</h2>
+        <p>
+          Local pickup is the fastest option for customers near the Lower Mainland.
+          This is ideal when the job cannot wait for transit.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Pickup Detail</th>
+              <th>Information</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Location</strong></td>
+              <td>Coquitlam, British Columbia</td>
+            </tr>
+            <tr>
+              <td><strong>Ready Time</strong></td>
+              <td>Usually same day or next business day</td>
+            </tr>
+            <tr>
+              <td><strong>Notification</strong></td>
+              <td>Pickup confirmation sent when order is ready</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container grid-2">
+      <div class="card">
+        <div class="angle-tag">Bulk Support</div>
+        <h2>Large orders and custom shipping</h2>
+        <p>
+          Large-volume shipments are reviewed individually to match the most practical method for weight,
+          packaging, handling, and destination.
+        </p>
+        <ul class="check-list">
+          <li>Optimized shipping for larger case quantities</li>
+          <li>Freight or custom arrangements available when needed</li>
+          <li>Support for repeat business and scheduled restocks</li>
+        </ul>
+        <p class="footer-note">
+          For larger orders, contact our team for shipping guidance before checkout if you need a custom arrangement.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="angle-tag">Shipping Notes</div>
+        <h2>Important information</h2>
+        <ul class="mini-list">
+          <li>Transit times are estimates, not guaranteed delivery dates.</li>
+          <li>Remote areas may require longer delivery windows.</li>
+          <li>Please confirm your shipping address carefully before placing the order.</li>
+          <li>Some products may have specific shipping handling requirements.</li>
+          <li>USA shipping can be offered separately if enabled in your store settings.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="eyebrow"><span>Support &amp; FAQ</span></div>
+      <h2 class="section-title">Common questions</h2>
+
+      <div class="accordion">
+        <details class="accordion-item">
+          <summary>Damaged or missing package?</summary>
+          <div class="accordion-body">
+            <p>If your order arrives damaged or does not arrive as expected, contact us promptly so we can review the shipment and help resolve the issue.</p>
+            <ul class="check-list">
+              <li>Report shipping issues within 5 business days of delivery</li>
+              <li>Include your order number and any relevant photos</li>
+              <li>We will review the shipment and advise next steps quickly</li>
+            </ul>
+          </div>
+        </details>
+        <details class="accordion-item">
+          <summary>When will my order ship?</summary>
+          <div class="accordion-body">
+            <p>Orders placed before 12 PM PST typically ship the same day if items are in stock.</p>
+          </div>
+        </details>
+        <details class="accordion-item">
+          <summary>Can I get faster shipping?</summary>
+          <div class="accordion-body">
+            <p>Yes. Expedited options can be offered for urgent orders depending on the destination.</p>
+          </div>
+        </details>
+        <details class="accordion-item">
+          <summary>Why does shipping cost vary?</summary>
+          <div class="accordion-body">
+            <p>Rates depend on destination, package weight, dimensions, and the service level selected.</p>
+          </div>
+        </details>
+        <details class="accordion-item">
+          <summary>Do you offer shipping outside Canada?</summary>
+          <div class="accordion-body">
+            <p>You can add USA shipping information here if that service is active in your store.</p>
+          </div>
+        </details>
+        <details class="accordion-item">
+          <summary>What happens if I enter the wrong address?</summary>
+          <div class="accordion-body">
+            <p>Contact us immediately. Address changes may be possible before the shipment is processed or scanned by the carrier.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.querySelectorAll('.section').forEach(sec => sec.classList.add('reveal'));
+
+    document.querySelectorAll('.stats-grid .card, .grid-2 > *, .grid-3 > *, .support-grid > *, .bottom-grid > *').forEach((el, i) => {
+      el.classList.add('reveal', `reveal-delay-${Math.min(i + 1, 6)}`);
+    });
+
+    document.querySelectorAll('.accordion-item').forEach((el, i) => {
+      el.classList.add('reveal', `reveal-delay-${Math.min(i + 1, 6)}`);
+    });
+
+    document.querySelectorAll('table, .notice-bar').forEach(el => {
+      if (!el.closest('.card')) el.classList.add('reveal');
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

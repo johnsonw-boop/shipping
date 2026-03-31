@@ -87,57 +87,24 @@
       position: relative;
       overflow: hidden;
       background:
-        linear-gradient(135deg, rgba(23,147,209,0.95), rgba(23,147,209,0.78)),
-        linear-gradient(160deg, #0f2d3d, #1793D1);
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+        url('https://cdn.shopify.com/s/files/1/0465/6545/8072/files/shipping.png?v=1774988435') center center / cover no-repeat;
       color: var(--white);
-      padding: 84px 0 72px;
-    }
-
-    .hero::before,
-    .hero::after {
-      content: "";
-      position: absolute;
-      background: rgba(255,255,255,0.08);
-      transform: skew(-24deg);
-    }
-
-    .hero::before {
-      width: 240px;
-      height: 100%;
-      right: 8%;
-      top: 0;
-    }
-
-    .hero::after {
-      width: 120px;
-      height: 100%;
-      right: 22%;
-      top: 0;
-    }
-
-    .hero-grid {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 28px;
+      padding: 150px 0;
+      display: flex;
       align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 450px;
     }
 
     .hero h1 {
       color: var(--white);
       font-size: clamp(2.4rem, 5vw, 4.3rem);
       line-height: 1.05;
-      margin-bottom: 18px;
+      margin: 0;
     }
 
-    .hero p {
-      font-size: 1.08rem;
-      max-width: 720px;
-      margin-bottom: 24px;
-    }
-
-    .hero-card,
     .card,
     .map-card {
       background: var(--white);
@@ -146,11 +113,6 @@
       border-radius: var(--radius);
     }
 
-    .hero-card {
-      color: var(--secondary);
-      padding: 24px;
-      transform: rotate(-2deg);
-    }
 
     .check-list {
       list-style: none;
@@ -175,12 +137,6 @@
       font-weight: 800;
     }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 24px;
-    }
 
     .btn {
       display: inline-block;
@@ -477,9 +433,6 @@
         grid-template-columns: 1fr;
       }
 
-      .hero-card {
-        transform: none;
-      }
     }
 
     @media (max-width: 640px) {
@@ -505,35 +458,8 @@
 </head>
 <body>
   <section class="hero">
-    <div class="container hero-grid">
-      <div>
-        <div class="eyebrow"><span>Shipping Information</span></div>
-        <h1>Fast, Reliable Shipping Across Canada</h1>
-        <p>
-          Orders ship from Coquitlam, BC with clear delivery timelines, full tracking,
-          and practical options for standard, expedited, local pickup, and bulk freight.
-        </p>
-        <ul class="check-list">
-          <li>Orders placed before 12 PM PST typically ship same day</li>
-          <li>Standard delivery across Canada in 1–5 business days</li>
-          <li>Tracking sent as soon as your order leaves our warehouse</li>
-        </ul>
-        <div class="hero-actions">
-          <a href="/collections/all" class="btn btn-primary"><span>Shop Adhesives</span></a>
-          <a href="/pages/contact" class="btn btn-secondary"><span>Contact Support</span></a>
-        </div>
-      </div>
-
-      <div class="hero-card">
-        <div class="angle-tag">What to Expect</div>
-        <h3>Built for shops that need clear answers</h3>
-        <ul class="mini-list">
-          <li>Processing time and transit time separated clearly</li>
-          <li>Region-based delivery estimates for Canada</li>
-          <li>Custom support available for large or repeat orders</li>
-          <li>Local pickup option for Lower Mainland customers</li>
-        </ul>
-      </div>
+    <div class="container">
+      <h1>Shipping center</h1>
     </div>
   </section>
 

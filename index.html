@@ -69,12 +69,13 @@
       display: inline-block;
       background: var(--primary);
       color: var(--white);
-      padding: 8px 16px;
+      padding: 6px 16px;
       font-size: 0.85rem;
       font-weight: 700;
       text-transform: uppercase;
       transform: skew(-18deg);
       margin-bottom: 20px;
+      box-shadow: 6px 6px 0 rgba(0,0,0,0.15);
     }
 
     .eyebrow span,
@@ -87,7 +88,7 @@
       position: relative;
       overflow: hidden;
       background:
-        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
         url('https://cdn.shopify.com/s/files/1/0465/6545/8072/files/shipping.png?v=1774988435') center center / cover no-repeat;
       color: var(--white);
       padding: 150px 0;
@@ -195,7 +196,13 @@
       text-transform: uppercase;
       font-weight: 700;
       margin-bottom: 14px;
-      border-radius: 16px;
+      transform: skew(-18deg);
+      box-shadow: 6px 6px 0 rgba(0,0,0,0.15);
+    }
+
+    .angle-tag span {
+      display: inline-block;
+      transform: skew(18deg);
     }
 
     .stats-grid .card {
@@ -467,11 +474,6 @@
     <div class="container">
       <div class="eyebrow"><span>Core Promise</span></div>
       <h2 class="section-title">Shipping that matches the job</h2>
-      <p class="section-intro">
-        Whether you are restocking your shop, filling a production order, or replacing material quickly,
-        the goal is simple: get the right adhesive to you on time with no guesswork.
-      </p>
-
       <div class="stats-grid">
         <div class="card">
           <div class="stat-number">0–1</div>
@@ -547,12 +549,8 @@
   <section class="section">
     <div class="container grid-2">
       <div class="card">
-        <div class="angle-tag">Clarity First</div>
+        <div class="angle-tag"><span>Clarity First</span></div>
         <h2>Processing time vs delivery time</h2>
-        <p>
-          These are not the same thing. Processing time covers order review, packing, and handoff.
-          Delivery time starts once the carrier has the shipment.
-        </p>
         <table>
           <thead>
             <tr>
@@ -580,7 +578,7 @@
       </div>
 
       <div class="card">
-        <div class="angle-tag">Order Flow</div>
+        <div class="angle-tag"><span>Order Flow</span></div>
         <h2>How shipping works</h2>
         <ul class="check-list">
           <li>Place your order online</li>
@@ -598,9 +596,6 @@
       <div>
         <div class="eyebrow"><span>Canada Delivery Map</span></div>
         <h2 class="section-title">Estimated transit by region</h2>
-        <p class="section-intro">
-          Delivery times vary by location. The map below gives a practical overview for standard shipping across Canada.
-        </p>
         <table>
           <thead>
             <tr>
@@ -645,7 +640,7 @@
       </div>
 
       <div class="map-card">
-        <div class="angle-tag">Visual Guide</div>
+        <div class="angle-tag"><span>Visual Guide</span></div>
         <div class="map-wrap">
           <svg class="map-svg" viewBox="0 0 540 420" xmlns="http://www.w3.org/2000/svg" aria-label="Stylized Canada shipping region map">
             <rect x="0" y="0" width="540" height="420" fill="transparent"/>
@@ -687,15 +682,11 @@
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" style="padding-top: 0;">
     <div class="container support-grid">
       <div class="card">
-        <div class="angle-tag">Tracking</div>
+        <div class="angle-tag"><span>Tracking</span></div>
         <h2>Carriers and order tracking</h2>
-        <p>
-          Orders ship using reliable carrier services selected for destination, package size,
-          and service level. Tracking is sent automatically once the shipment is scanned into the network.
-        </p>
         <ul class="mini-list">
           <li>Tracking details sent by email after shipment confirmation</li>
           <li>Transit updates depend on carrier scan events</li>
@@ -704,7 +695,7 @@
       </div>
 
       <div class="card">
-        <div class="angle-tag">Local Pickup</div>
+        <div class="angle-tag"><span>Local Pickup</span></div>
         <h2>Pickup in Coquitlam, BC</h2>
         <p>
           Local pickup is the fastest option for customers near the Lower Mainland.
@@ -739,12 +730,8 @@
   <section class="section" style="padding-top: 0;">
     <div class="container grid-2">
       <div class="card">
-        <div class="angle-tag">Bulk Support</div>
+        <div class="angle-tag"><span>Bulk Support</span></div>
         <h2>Large orders and custom shipping</h2>
-        <p>
-          Large-volume shipments are reviewed individually to match the most practical method for weight,
-          packaging, handling, and destination.
-        </p>
         <ul class="check-list">
           <li>Optimized shipping for larger case quantities</li>
           <li>Freight or custom arrangements available when needed</li>
@@ -756,7 +743,7 @@
       </div>
 
       <div class="card">
-        <div class="angle-tag">Shipping Notes</div>
+        <div class="angle-tag"><span>Shipping Notes</span></div>
         <h2>Important information</h2>
         <ul class="mini-list">
           <li>Transit times are estimates, not guaranteed delivery dates.</li>

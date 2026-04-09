@@ -484,6 +484,7 @@
       background: var(--white);
       border-top: 1px solid var(--mid);
       border-bottom: 1px solid var(--mid);
+      border-radius: 16px;
       padding: 28px 0;
       overflow: hidden;
     }
@@ -583,9 +584,108 @@
 
     }
 
+    @media (max-width: 768px) {
+      .container {
+        width: min(var(--max), calc(100% - 20px));
+      }
+
+      .carrier-band {
+        padding: 20px 0;
+      }
+
+      .carrier-track::before,
+      .carrier-track::after {
+        display: none;
+      }
+
+      .carrier-inner {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .carrier-sep {
+        display: none;
+      }
+
+      .carrier-logo {
+        padding: 8px 10px;
+        font-size: 1.05rem;
+      }
+
+      .card,
+      .map-card {
+        padding: 18px;
+      }
+
+      .card-outer {
+        padding-top: 52px;
+      }
+
+      .responsive-table thead {
+        display: none;
+      }
+
+      .responsive-table,
+      .responsive-table tbody,
+      .responsive-table tr,
+      .responsive-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .responsive-table {
+        border: none;
+        box-shadow: none;
+        background: transparent;
+      }
+
+      .responsive-table tr {
+        background: var(--white);
+        border: 1.5px solid #c8d4db;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        margin-bottom: 14px;
+        overflow: hidden;
+      }
+
+      .responsive-table td {
+        border-bottom: 1px solid #dbe6ed;
+        padding: 12px 14px 12px 44%;
+        min-height: 44px;
+        position: relative;
+        word-break: break-word;
+      }
+
+      .responsive-table td:last-child {
+        border-bottom: none;
+      }
+
+      .responsive-table td::before {
+        position: absolute;
+        left: 14px;
+        top: 12px;
+        width: 38%;
+        font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+        font-size: 0.82rem;
+        letter-spacing: 0.02em;
+        color: #56626d;
+        text-transform: uppercase;
+        line-height: 1.35;
+      }
+
+      .rate-table td:nth-child(1)::before { content: "Option"; }
+      .rate-table td:nth-child(2)::before { content: "Estimated Delivery"; }
+      .rate-table td:nth-child(3)::before { content: "Cost"; }
+      .rate-table td:nth-child(4)::before { content: "Best For"; }
+
+      .timeline-table td:nth-child(1)::before { content: "Stage"; }
+      .timeline-table td:nth-child(2)::before { content: "What It Means"; }
+      .timeline-table td:nth-child(3)::before { content: "Typical Timing"; }
+    }
+
     @media (max-width: 640px) {
       .ship-section {
-        padding: 48px 0;
+        padding: 40px 0;
       }
 
       th, td {
@@ -600,6 +700,14 @@
       .btn {
         width: 100%;
         text-align: center;
+      }
+
+      .responsive-table td {
+        padding-left: 40%;
+      }
+
+      .responsive-table td::before {
+        width: 34%;
       }
     }
   </style>
@@ -688,7 +796,7 @@
   <section class="ship-section">
     <div class="container">
       <div class="eyebrow"><span>Rate Comparison</span></div>
-      <table>
+      <table class="responsive-table rate-table">
         <thead>
           <tr>
             <th>Option</th>
@@ -731,7 +839,7 @@
         <div class="angle-tag"><span>Processing Timeline</span></div>
         <div class="card">
         <h2>Processing time vs delivery time</h2>
-        <table>
+        <table class="responsive-table timeline-table">
           <thead>
             <tr>
               <th>Stage</th>

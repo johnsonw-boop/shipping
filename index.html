@@ -378,7 +378,7 @@
       border-radius: 10px;
       padding: 16px 20px;
       width: 100%;
-      max-width: min(480px, 100%);
+      max-width: min(640px, 100%);
       cursor: default;
       transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease;
     }
@@ -426,14 +426,28 @@
     }
 
     .wf-text {
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
       white-space: normal;
+    }
+
+    .wf-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #1f2b38;
+      line-height: 1.4;
       transition: color 0.22s ease;
     }
 
-    .wf-step:hover .wf-text {
+    .wf-desc {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: #445261;
+      letter-spacing: 0.01em;
+    }
+
+    .wf-step:hover .wf-title {
       color: var(--primary);
     }
 
@@ -447,7 +461,7 @@
       flex-direction: column;
       align-items: flex-start;
       width: 100%;
-      max-width: min(480px, 100%);
+      max-width: min(640px, 100%);
       /* 28px left padding of step + 15px = circle center */
       padding-left: 43px;
       gap: 0;
@@ -745,9 +759,9 @@
           <p class="text-muted">In-stock orders are usually packed and prepared within one business day.</p>
         </div>
         <div class="card">
-          <div class="stat-number">1–5</div>
+          <div class="stat-number">1–7</div>
           <h3>Business Day Delivery</h3>
-          <p class="text-muted">Typical standard transit time across most Canadian regions.</p>
+          <p class="text-muted">Typical standard transit time across most Canadian and American regions.</p>
         </div>
         <div class="card">
           <div class="stat-number">100%</div>
@@ -767,27 +781,58 @@
         <div class="workflow">
           <div class="wf-step">
             <div class="wf-num">1</div>
-            <div class="wf-text">Place your order online</div>
+            <div class="wf-text">
+              <div class="wf-title">Place your order</div>
+              <div class="wf-desc">Add products to your cart and proceed to checkout. Shipping rates are calculated in real time. Free shipping is applied automatically when eligible.</div>
+            </div>
           </div>
           <div class="wf-arrow"><div class="wf-arrow-line"></div><div class="wf-arrow-head"></div></div>
           <div class="wf-step">
             <div class="wf-num">2</div>
-            <div class="wf-text">We confirm stock and prepare the shipment</div>
+            <div class="wf-text">
+              <div class="wf-title">Choose your shipping method</div>
+              <div class="wf-desc">Select between Standard or Express shipping (Express usually costs more). We ship with Canada Post, Purolator, UPS, and FedEx.</div>
+            </div>
           </div>
           <div class="wf-arrow"><div class="wf-arrow-line"></div><div class="wf-arrow-head"></div></div>
           <div class="wf-step">
             <div class="wf-num">3</div>
-            <div class="wf-text">Your package is handed to the selected carrier</div>
+            <div class="wf-text">
+              <div class="wf-title">Order confirmation</div>
+              <div class="wf-desc">You'll receive an email confirming your order details.</div>
+            </div>
           </div>
           <div class="wf-arrow"><div class="wf-arrow-line"></div><div class="wf-arrow-head"></div></div>
           <div class="wf-step">
             <div class="wf-num">4</div>
-            <div class="wf-text">Tracking is emailed automatically</div>
+            <div class="wf-text">
+              <div class="wf-title">Order shipped</div>
+              <div class="wf-desc">Once your order is processed and shipped, a confirmation email with tracking details is sent.</div>
+            </div>
+          </div>
+          <div class="wf-arrow"><div class="wf-arrow-line"></div><div class="wf-arrow-head"></div></div>
+          <div class="wf-step">
+            <div class="wf-num">5</div>
+            <div class="wf-text">
+              <div class="wf-title">Track your order</div>
+              <div class="wf-desc">Use the tracking link to follow your shipment until delivery.</div>
+            </div>
+          </div>
+          <div class="wf-arrow"><div class="wf-arrow-line"></div><div class="wf-arrow-head"></div></div>
+          <div class="wf-step">
+            <div class="wf-num">6</div>
+            <div class="wf-text">
+              <div class="wf-title">Delivery</div>
+              <div class="wf-desc">Your order arrives based on the selected shipping method.</div>
+            </div>
           </div>
           <div class="wf-arrow"><div class="wf-arrow-line"></div><div class="wf-arrow-head"></div></div>
           <div class="wf-step wf-step-end">
-            <div class="wf-num">5</div>
-            <div class="wf-text">Your order arrives at your destination</div>
+            <div class="wf-num">7</div>
+            <div class="wf-text">
+              <div class="wf-title">Feedback</div>
+              <div class="wf-desc">After delivery, you may be invited to rate your experience.</div>
+            </div>
           </div>
         </div>
       </div>
@@ -829,8 +874,8 @@
         </tbody>
       </table>
       <div class="notice-bar">
-        Free standard shipping can be promoted here once your order threshold is finalized.
-        Example: <strong>Free standard shipping on qualifying orders over $X.</strong>
+        Great news - free standard shipping is available once you reach the minimum order amount in your region.
+        <strong>Canada: free standard shipping on orders over CAD 50. U.S.: free standard shipping on orders over USD 100.</strong>
       </div>
     </div>
   </section>

@@ -706,6 +706,11 @@
       .timeline-table td:nth-child(1)::before { content: "Stage"; }
       .timeline-table td:nth-child(2)::before { content: "What It Means"; }
       .timeline-table td:nth-child(3)::before { content: "Typical Timing"; }
+
+      .region-table td:nth-child(1)::before { content: "Region"; }
+      .region-table td:nth-child(2)::before { content: "Standard Shipping"; }
+      .region-table td:nth-child(3)::before { content: "Express Shipping"; }
+      .region-table td:nth-child(4)::before { content: "Notes"; }
     }
 
     @media (max-width: 640px) {
@@ -891,7 +896,7 @@
     <div class="container bottom-grid">
       <div>
         <div class="eyebrow"><span>Transit by Region</span></div>
-        <table>
+        <table class="responsive-table region-table">
           <thead>
             <tr>
               <th>Region</th>
@@ -1059,19 +1064,19 @@
         <details class="accordion-item">
           <summary>When will my order ship?</summary>
           <div class="accordion-body">
-            <p>Orders placed before 12 PM PST typically ship the same day if items are in stock.</p>
+            <p>Standard shipping orders placed before 2 PM PST and express shipping orders placed before 4 PM PST typically ship the same day if items are in stock.</p>
           </div>
         </details>
         <details class="accordion-item">
           <summary>Can I get faster shipping?</summary>
           <div class="accordion-body">
-            <p>Yes. Expedited options can be offered for urgent orders depending on the destination.</p>
+            <p>Yes. We offer express shipping, and it costs extra from CAD 15 to CAD 35 depending on the destination.</p>
           </div>
         </details>
         <details class="accordion-item">
-          <summary>Why does shipping cost vary?</summary>
+          <summary>Why do shipping costs vary?</summary>
           <div class="accordion-body">
-            <p>Rates depend on destination, package weight, dimensions, and the service level selected.</p>
+            <p>Shipping rates vary based on destination, package weight and size, and the service level you choose.</p>
           </div>
         </details>
         <details class="accordion-item">
@@ -1087,7 +1092,7 @@
         <details class="accordion-item">
           <summary>Do you offer shipping outside Canada?</summary>
           <div class="accordion-body">
-            <p>You can add USA shipping information here if that service is active in your store.</p>
+            <p>Yes, currently USA. For other countries, please reach out to our sales directly.</p>
           </div>
         </details>
         <details class="accordion-item">
